@@ -26,30 +26,30 @@ def select_all():
     return albums
 
 
-# def select(id):
-#     album = None
-#     sql = "SELECT * FROM albums WHERE id = %s"
-#     values = [id]
-#     result = run_sql(sql, values)[0]
+def select(id):
+    album = None
+    sql = "SELECT * FROM albums WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
 
-#     if result is not None:
-#         artist = artist_repository.select(result['artist_id'])
-#         album = Album(result['title'], result['genre'], artist, result['id'])
-#     return album
-
-
-# def delete_all():
-#     sql = "DELETE  FROM albums"
-#     run_sql(sql)
+    if result is not None:
+        artist = artist_repository.select(result['artist_id'])
+        album = Album(result['title'], result['genre'], artist, result['id'])
+    return album
 
 
-# def delete(id):
-#     sql = "DELETE  FROM albums WHERE id = %s"
-#     values = [id]
-#     run_sql(sql, values)
+def delete_all():
+    sql = "DELETE  FROM albums"
+    run_sql(sql)
 
 
-# def update(album):
-#     sql = "UPDATE albums SET (title, artist, genre, id) = (%s, %s, %s, %s) WHERE id = %s"
-#     values = [album.title, album.artist.id, album.genre, album.id]
-#     run_sql(sql, values)
+def delete(id):
+    sql = "DELETE  FROM albums WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
+
+
+def update(album):
+    sql = "UPDATE albums SET (title, artist, genre, id) = (%s, %s, %s, %s) WHERE id = %s"
+    values = [album.title, album.artist.id, album.genre, album.id]
+    run_sql(sql, values)
